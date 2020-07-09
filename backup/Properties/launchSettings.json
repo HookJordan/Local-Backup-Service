@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "backup": {
+      "commandName": "Project",
+      "commandLineArgs": "./config.json"
+    }
+  }
+}
