@@ -14,10 +14,10 @@ namespace backup
             {
                 try
                 {
-                    var backupProvider = new BackupProvider(args[0]);
+                    var config = args.Length == 0 ? "./config.json" : args[0];
+                    var backupProvider = new BackupProvider(config);
 
                     // TODO: Determine if we are decrypting or not based on args[1] if it exists...
-
                     backupProvider.PerformBackup();
                 }
                 catch (Exception e)
@@ -27,7 +27,7 @@ namespace backup
             }
 
             // End of program
-            Console.Write("\n\n");
+            Console.Write("\n");
             PrintLn();
             Console.WriteLine("\nPress any key to exit . . .");
             Console.ReadKey();
@@ -44,7 +44,7 @@ namespace backup
 
         static bool ValidateArgs(string[] args)
         {
-            if (args.Length == 0 || args.Length > 2 || (args.Length == 2 && (args[1] != "-d" || args[1] != "--decrypt")))
+            if (args.Length > 2 || (args.Length == 2 && (args[1] != "-d" || args[1] != "--decrypt")))
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("\nUssage: backup.exe [config_input_location] [-d | --decrypt | optional]");
