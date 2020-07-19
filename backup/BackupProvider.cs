@@ -48,7 +48,7 @@ namespace backup
         public void PerformBackup()
         {
             // Generate timestamp to tag backup
-            var now = DateTime.Now.ToString("dd-MM-yyyy_HH-mm-s");
+            var now = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-s");
             var outpath = Path.Combine(Config.Output, now) + ".zip";
             long fileBackupCount = 0;
 
